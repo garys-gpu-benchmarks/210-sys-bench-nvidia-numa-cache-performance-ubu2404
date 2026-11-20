@@ -3,7 +3,7 @@
 **Main goal:** Measure NUMA local vs remote stride-walk latency  
 **Tools:** Build and run numa_sweep via collect_numa_cache.py, with numactl and optional perf stat
 
-Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_148 · recorded 2026-11-19). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
+Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_149 · recorded 2026-11-19). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
 
 > Smoke runs use deliberately small sizes. They check that the workload installs and runs end to end; their numbers are not performance results. Baseline and extended are.
 
@@ -11,15 +11,15 @@ Reference results measured by the maintainer on the system shown in each section
 ## smoke
 
 - **System:** 1× NVIDIA H100 NVL (95830 MiB) · AMD EPYC 9374F 32-Core Processor · Ubuntu 24.04.5 LTS · kernel 6.8.0-138-generic · driver 595.112.07
-- **Run:** 2026-11-19T15:07:31Z · status **N/A-EXPECTED** (exit 0)
-- **Time (mm:ss):** setup 00:30 · benchmark 00:01 · whole run 00:36
-- **Source:** run 210_20261119_150731
+- **Run:** 2026-11-19T21:22:32Z · status **N/A-EXPECTED** (exit 0)
+- **Time (mm:ss):** setup 00:30 · benchmark 00:02 · whole run 00:36
+- **Source:** run 210_20261119_212232
 - **Command:** `bash run_benchmark.sh --smoke --source-numa-node 0 --target-numa-node 0,remote --num-threads 1 --thread-affinity strict --working-set-size 32768,2097152,268435456 --cache-level L1,L3,DRAM --access-pattern random --stride 64 --num-iterations 20000`
 
 | # | Metric | Result |
 |---|---|---|
-| 1 | Largest cache-tier pointer-chase latency, ns (cache_latency_nsec) | 126.7635 |
-| 2 | Local DRAM pointer-chase latency, ns (local_numa_node_latency_nsec) | 203.4898 |
-| 3 | Pointer-chase payload rate, GB/s (local_dram_pointer_chase_bandwidth_gb_s) | 0.0393 |
+| 1 | Largest cache-tier pointer-chase latency, ns (cache_latency_nsec) | 90.2659 |
+| 2 | Local DRAM pointer-chase latency, ns (local_numa_node_latency_nsec) | 198.7426 |
+| 3 | Pointer-chase payload rate, GB/s (local_dram_pointer_chase_bandwidth_gb_s) | 0.0403 |
 | 4 | DRAM-tier cache misses/s (cache_miss_counters_misses_sec) | na (expected: perf_event_paranoid blocks cache-misses) |
 <!-- /profile:smoke -->
